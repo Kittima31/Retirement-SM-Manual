@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เส้นทางใหม่ที่สดใส | คู่มือเตรียมความพร้อมหลังเกษียณ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  body{font-family:'Sarabun',sans-serif}
+  h1,h2,h3,h4,h5,button{font-family:'Prompt',sans-serif}
+  .tab-active{border-bottom:3px solid #7c3aed;color:#7c3aed;font-weight:600}
+  .tab-inactive{border-bottom:3px solid transparent;color:#6b7280}
+  .zigzag-left{text-align:right;padding-right:2rem}
+  .zigzag-right{text-align:left;padding-left:2rem}
+  @media print{.no-print{display:none}.print-full{width:100%}}
+  .calc-result{background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff}
+  .toggle-on{background:#16a34a;color:#fff}
+  .toggle-off{background:#e5e7eb;color:#374151}
+  input[type=range]{accent-color:#7c3aed}
+  .doc-done{background:#f0fdf4;border-color:#86efac}
+  .doc-done h4{color:#15803d}
+</style>
+</head>
+<body class="bg-amber-50 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-2xl">🚗</span>
+      <div>
+        <h1 class="text-base font-bold text-gray-800">เส้นทางใหม่ที่สดใส</h1>
+        <p class="text-xs text-gray-500">คู่มือเตรียมความพร้อมหลังเกษียณ (ฉบับพนักงาน)</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-xs text-gray-500 hidden sm:block">ยืนดีกับกับความสำเร็จตลอดหลายปีที่ผ่านมา 🎉</span>
+      <button onclick="window.print()" class="no-print flex items-center gap-2 bg-purple-600 text-white text-xs px-3 py-2 rounded-lg hover:bg-purple-700 transition">
+        <i class="fa-solid fa-print"></i> พิมพ์ / บันทึก PDF
+      </button>
+    </div>
+  </div>
+  <!-- Tabs -->
+  <div class="max-w-5xl mx-auto px-4 flex gap-1 overflow-x-auto no-print">
+    <button onclick="switchTab('prep')" id="tab-prep" class="tab-active flex items-center gap-1.5 px-4 py-3 text-sm whitespace-nowrap transition">
+      📅 ปฏิทินการเตรียมตัว
+    </button>
+    <button onclick="switchTab('money')" id="tab-money" class="tab-inactive flex items-center gap-1.5 px-4 py-3 text-sm whitespace-nowrap transition">
+      💰 เงิน
+    </button>
+    <button onclick="switchTab('tax')" id="tab-tax" class="tab-inactive flex items-center gap-1.5 px-4 py-3 text-sm whitespace-nowrap transition">
+      📋 ภาษี
+    </button>
+    <button onclick="switchTab('medical')" id="tab-medical" class="tab-inactive flex items-center gap-1.5 px-4 py-3 text-sm whitespace-nowrap transition">
+      🏥 สิทธิรักษาพยาบาล
+    </button>
+    <button onclick="switchTab('todo')" id="tab-todo" class="tab-inactive flex items-center gap-1.5 px-4 py-3 text-sm whitespace-nowrap transition">
+      ✅ สิ่งที่ต้องทำ &amp; เอกสาร
+    </button>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-4 py-8 w-full flex-grow">
+
+<!-- ══════════════════════════════════════════════
+     TAB 1: ปฏิทินการเตรียมตัว
+══════════════════════════════════════════════ -->
+<div id="content-prep" class="tab-content">
+  <div class="text-center mb-10">
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">ก้าวสู่การเกษียณอย่างมั่นใจ</h2>
+    <p class="text-gray-500 text-sm max-w-xl mx-auto">ส่วนนี้แสดงลำดับเหตุการณ์สำคัญและสิ่งที่คุณควรตรวจสอบล่วงหน้า เพื่อให้การเปลี่ยนผ่านเป็นไปอย่างราบรื่น ไม่พลาดสิทธิประโยชน์ใดๆ ที่คุณควรได้รับ</p>
+  </div>
+
+  <!-- Zigzag Timeline -->
+  <div class="relative">
+    <!-- Center line -->
+    <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-purple-100 -translate-x-1/2"></div>
+
+    <!-- Item 1: Right -->
+    <div class="flex items-start mb-12 relative">
+      <div class="w-1/2 zigzag-left pr-8">
+        <span class="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full mb-2">3 เดือนก่อนเกษียณ</span>
+      </div>
+      <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center z-10 shadow-md">
+        <i class="fa-solid fa-magnifying-glass text-white text-sm"></i>
+      </div>
+      <div class="w-1/2 pl-8">
+        <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <h4 class="font-bold text-gray-800 text-sm mb-1">ตรวจสอบยอดเงินและหนี้สิน</h4>
+          <p class="text-xs text-gray-500">ตรวจสอบยอดเงินกองทุนสำรองเลี้ยงชีพ (PVD) และเคลียร์หนี้สินสหกรณ์ (ถ้ามี) เพื่อวางแผนการเงินล่วงหน้า</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 2: Left -->
+    <div class="flex items-start mb-12 relative">
+      <div class="w-1/2 pr-8 text-right">
+        <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm inline-block text-left w-full">
+          <h4 class="font-bold text-gray-800 text-sm mb-1">อัปเดตข้อมูลส่วนตัว</h4>
+          <p class="text-xs text-gray-500">ตรวจสอบความถูกต้องของชื่อ-นามสกุล ในระบบประกันสังคมให้ตรงกับบัตรประชาชนปัจจุบัน</p>
+        </div>
+      </div>
+      <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center z-10 shadow-md">
+        <i class="fa-solid fa-user text-white text-sm"></i>
+      </div>
+      <div class="w-1/2 pl-8">
+        <span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">1 เดือนก่อนเกษียณ</span>
+      </div>
+    </div>
+
+    <!-- Item 3: Right -->
+    <div class="flex items-start mb-12 relative">
+      <div class="w-1/2 pr-8 text-right">
+        <span class="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full mb-2">หลังวันเกษียณ 1-3 วัน</span>
+      </div>
+      <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center z-10 shadow-md">
+        <i class="fa-solid fa-building text-white text-sm"></i>
+      </div>
+      <div class="w-1/2 pl-8">
+        <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <h4 class="font-bold text-gray-800 text-sm mb-1">ติดต่อบริษัท</h4>
+          <p class="text-xs text-gray-500">ยื่นเรื่องขอรับเงินชดเชยตามกฎหมาย และสิทธิประโยชน์อื่นๆ จากบริษัท</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 4: Left -->
+    <div class="flex items-start mb-4 relative">
+      <div class="w-1/2 pr-8 text-right">
+        <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm inline-block text-left w-full">
+          <h4 class="font-bold text-gray-800 text-sm mb-1">ยื่นรับเงินชราภาพ (สปส.)</h4>
+          <p class="text-xs text-gray-500">แม้กฎหมายจะให้เวลาถึง 2 ปี แต่ HR แนะนำให้ยื่นขอรับเงินชราภาพที่สำนักงานประกันสังคม (ทุกจังหวัดใกล้บ้าน) ภายใน 60 วัน เพื่อความรวดเร็ว</p>
+        </div>
+      </div>
+      <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center z-10 shadow-md">
+        <i class="fa-solid fa-store text-white text-sm"></i>
+      </div>
+      <div class="w-1/2 pl-8">
+        <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">ภายใน 60 วันหลังเกษียณ</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 2: เงิน
+══════════════════════════════════════════════ -->
+<div id="content-money" class="tab-content hidden">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">การจัดการเงินและสิทธิประโยชน์</h2>
+    <p class="text-gray-500 text-sm">ส่วนนี้ให้ข้อมูลเรื่องการรับเงิน บำเหน็จ และเงินชราภาพจากประกันสังคม เพื่อให้คุณวางแผนและคาดการณ์ได้อย่างแม่นยำ</p>
+  </div>
+
+  <!-- สรุปรายได้ -->
+  <h3 class="font-bold text-gray-700 mb-3 flex items-center gap-2"><span>📦</span> สรุปรายได้จากบริษัทฯ เมื่อเกษียณอายุ</h3>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+    <div class="bg-white border-2 border-purple-200 rounded-xl p-4">
+      <div class="text-2xl mb-1">💼</div>
+      <div class="font-bold text-sm text-gray-800">เงินชดเชยเกษียณอายุ</div>
+      <div class="text-xs text-gray-500 mt-1">สิทธิตามกฎหมายแรงงาน คำนวณจาก อายุงาน × ค่าจ้างสุดท้าย (สูงสุด 400 วัน)</div>
+    </div>
+    <div class="bg-white border-2 border-yellow-200 rounded-xl p-4">
+      <div class="text-2xl mb-1">☀️</div>
+      <div class="font-bold text-sm text-gray-800">เงินปาเหน็จ</div>
+      <div class="text-xs text-gray-500 mt-1">สิทธิพิเศษจากบริษัท<br/>• สูตร: (อายุงาน 1 ส.ค. 2551)<br/>• เริ่ม: 1% ตั้งแต่ที่ 180 เดือน<br/>• สูงสุด 21 ส.ค. 2551</div>
+    </div>
+    <div class="bg-white border-2 border-green-200 rounded-xl p-4">
+      <div class="text-2xl mb-1">📄</div>
+      <div class="font-bold text-sm text-gray-800">ค่าจ้างเดือนสุดท้าย</div>
+      <div class="text-xs text-gray-500 mt-1">รวมเงินเดือน + ค่าครองชีพ + ค่าตำแหน่ง ในเดือนสุดท้ายของการทำงาน</div>
+    </div>
+    <div class="bg-white border-2 border-pink-200 rounded-xl p-4">
+      <div class="text-2xl mb-1">🎁</div>
+      <div class="font-bold text-sm text-gray-800">โบนัส &amp; เงินพิเศษ</div>
+      <div class="text-xs text-gray-500 mt-1">จ่ายตามสัดส่วนระยะเวลาในรอบปีบัญชี (1 ม.ค. – วันสุดท้าย)</div>
+    </div>
+  </div>
+
+  <!-- Calculator -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-8">
+    <h3 class="font-bold text-gray-700 mb-4 flex items-center gap-2"><span>🧮</span> เครื่องคำนวณเงินชดเชยเกษียณอายุเบื้องต้น</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <label class="text-sm font-medium text-gray-700 block mb-1">เงินเดือนสุดท้าย (บาท)</label>
+        <p class="text-xs text-gray-400 mb-2">*โปรดระบุเงินเดือนรวมค่าจ้างที่ได้รับในเดือนสุดท้ายก่อนเกษียณ</p>
+        <input type="number" id="salary" placeholder="เช่น 30000" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
+        
+        <label class="text-sm font-medium text-gray-700 block mt-4 mb-1">อายุงานของคุณ</label>
+        <select id="workYears" class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
+          <option value="">โปรดเลือกอายุงาน...</option>
+          <option value="30">120 วัน – ไม่ถึง 1 ปี (รับ 30 วัน)</option>
+          <option value="90">1 ปี – ไม่ถึง 3 ปี (รับ 90 วัน)</option>
+          <option value="180">3 ปี – ไม่ถึง 6 ปี (รับ 180 วัน)</option>
+          <option value="240">6 ปี – ไม่ถึง 10 ปี (รับ 240 วัน)</option>
+          <option value="300">10 ปี – ไม่ถึง 20 ปี (รับ 300 วัน)</option>
+          <option value="400">20 ปีขึ้นไป (รับ 400 วัน)</option>
+        </select>
+
+        <button onclick="calcSeverance()" class="mt-4 w-full bg-purple-600 text-white py-2.5 rounded-lg font-medium text-sm hover:bg-purple-700 transition">
+          คำนวณเงินชดเชย
+        </button>
+        <div id="calc-result" class="mt-3 hidden calc-result rounded-xl p-4 text-center">
+          <div class="text-xs opacity-80 mb-1">เงินชดเชยขั้นต่ำที่คุณควรได้รับ</div>
+          <div class="text-3xl font-bold" id="calc-amount">0</div>
+          <div class="text-xs opacity-80 mt-1">บาท</div>
+          <div class="text-xs opacity-70 mt-2" id="calc-note"></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-gray-700 mb-3">📊 ตารางอัตราวันชดเชย (พ.ร.บ. คุ้มครองแรงงาน)</h4>
+        <div class="overflow-hidden rounded-xl border border-gray-200">
+          <table class="w-full text-xs">
+            <thead><tr class="bg-gray-50">
+              <th class="p-2 text-left font-semibold text-gray-600">อายุงาน</th>
+              <th class="p-2 text-right font-semibold text-gray-600">อัตราวันชดเชย</th>
+            </tr></thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-purple-50/30"><td class="p-2">120 วัน – ไม่ถึง 1 ปี</td><td class="p-2 text-right font-medium">30 วัน</td></tr>
+              <tr class="hover:bg-purple-50/30"><td class="p-2">1 ปี – ไม่ถึง 3 ปี</td><td class="p-2 text-right font-medium">90 วัน</td></tr>
+              <tr class="hover:bg-purple-50/30"><td class="p-2">3 ปี – ไม่ถึง 6 ปี</td><td class="p-2 text-right font-medium">180 วัน</td></tr>
+              <tr class="hover:bg-purple-50/30"><td class="p-2">6 ปี – ไม่ถึง 10 ปี</td><td class="p-2 text-right font-medium">240 วัน</td></tr>
+              <tr class="hover:bg-purple-50/30"><td class="p-2">10 ปี – ไม่ถึง 20 ปี</td><td class="p-2 text-right font-medium">300 วัน</td></tr>
+              <tr class="bg-purple-50"><td class="p-2 font-semibold text-purple-700">20 ปีขึ้นไป</td><td class="p-2 text-right font-bold text-purple-700">400 วัน</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-red-500 mt-2">* หมายเหตุ: การคำนวณจะใช้ค่า "ค่าจ้างสุดท้าย" ตามนิยามของกฎหมาย สำหรับข้อมูลแน่ชัดโปรดติดต่อฝ่าย HR</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- เงินชราภาพ SSO -->
+  <div class="grid md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-white border border-gray-200 rounded-2xl p-5">
+      <h3 class="font-bold text-gray-700 mb-3 flex items-center gap-2"><span>🏦</span> เงินโดยเงินชราภาพจากประกันสังคม</h3>
+      <div class="space-y-2 text-xs text-gray-600">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-2.5">
+          <span class="font-semibold text-red-700">⚠ เงินพิเศษฯ (ม.33 และ ม.39):</span>
+          <ul class="mt-1 space-y-0.5 list-disc list-inside">
+            <li>ต่อประกัน (ม.39): 432 บาท/เดือน</li>
+            <li>เริ่มรับบำนาญ อายุ 55 ปี ขึ้นไป</li>
+            <li>คืนสุขภาพ+ชราภาพเป็นรายเดือน (ตลอด หรือ เงินก้อน)</li>
+          </ul>
+        </div>
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-2.5">
+          <span class="font-semibold text-blue-700">📅 อัตราเงินบำนาญรายเดือน (ตั้ง 1 ม.ค. 2569):</span>
+          <ul class="mt-1 space-y-0.5 list-disc list-inside">
+            <li>รอบที่ 1 (2569-2571): เหยาะ 17,500 บ. (สูงสุด 0.75 บ.)</li>
+            <li>รอบที่ 2 (2572-2574): เหยาะ 20,000 บ. (สูงสุด 1,000 บ.)</li>
+            <li>รอบที่ 3 (2575 ขึ้นไป): เหยาะ 23,000 บ. (สูงสุด 1,150 บ.)</li>
+          </ul>
+        </div>
+        <p class="text-gray-400 italic">รูปแบบรายเดือนจะเรียกว่า "บำนาญ" ไม่สามารถขอคืนก่อนกำหนด โปรดศึกษาเพิ่มเติมก่อนตัดสินใจ</p>
+      </div>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-2xl p-5">
+      <h3 class="font-bold text-gray-700 mb-3 flex items-center gap-2"><span>⚖️</span> ตารางเปรียบเทียบบำเหน็จ vs บำนาญ</h3>
+      <div class="overflow-hidden rounded-xl border border-gray-200 text-xs">
+        <table class="w-full">
+          <thead><tr class="bg-gray-50">
+            <th class="p-2 text-left font-semibold">ประเภท</th>
+            <th class="p-2 text-center font-semibold text-blue-700">บำเหน็จ (เงินก้อน)</th>
+            <th class="p-2 text-center font-semibold text-purple-700">บำนาญ (รายเดือน)</th>
+          </tr></thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="p-2 font-medium">เงินใช้ (ส่งสมทบ 180 เดือน)</td><td class="p-2 text-center text-blue-600">ส่งสมทบ 180 เดือน</td><td class="p-2 text-center text-purple-600">ส่งตั้งแต่ 180 เดือน (15 ปี) ขึ้นไป</td></tr>
+            <tr class="bg-gray-50"><td class="p-2 font-medium">สิ่งที่จะได้รับ</td>
+              <td class="p-2 text-center text-xs text-blue-700">เงินก้อนรวม = เงินสมทบ + ผลตอบแทน + เงินสมทบนายจ้าง + ผลตอบแทน</td>
+              <td class="p-2 text-center text-xs text-purple-700">ส่งครบ 15 ปี 20% ของฐาน 60 เดือนสุดท้าย<br/>+ ส่งเกิน 15 ปี: รับเพิ่ม 1.5% ต่อทุกๆ 1 ปีที่ส่งเพิ่ม</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-2.5 text-xs">
+        <p class="font-semibold text-yellow-700">⏰ กำหนดการยื่นเรื่อง: ต้องยื่นภายใน 2 ปี นับแต่วันที่มีสิทธิ</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator บำนาญ -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-5">
+    <h3 class="font-bold text-gray-700 mb-4 flex items-center gap-2"><span>💡</span> คลอดคำนวณบำนาญชราภาพ (รายเดือน) เบื้องต้น</h3>
+    <div class="grid md:grid-cols-3 gap-3 mb-4">
+      <div>
+        <label class="text-xs font-medium text-gray-600 block mb-1">ปีที่จะเริ่มรับ</label>
+        <select id="penYear" class="w-full border rounded-lg px-3 py-2 text-sm">
+          <option>ปี 2569 – 25▼</option>
+          <option>ปี 2572 – 25▼</option>
+          <option>ปี 2575+</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-medium text-gray-600 block mb-1">เงินเดือนสุดท้าย 60 เดือน (เฉลี่ย)</label>
+        <input type="number" id="penSalary" placeholder="บาท" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300">
+      </div>
+      <div>
+        <label class="text-xs font-medium text-gray-600 block mb-1">ระยะเวลาส่งสมทบ (เดือน)</label>
+        <input type="number" id="penMonths" placeholder="เช่น 180" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300">
+      </div>
+    </div>
+    <button onclick="calcPension()" class="bg-emerald-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 transition">คำนวณยอดค่าว่าจะได้รับ</button>
+    <div id="pen-result" class="hidden mt-4 bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
+      <div class="text-sm text-emerald-700 font-medium mb-1">บำนาญชราภาพประมาณการ</div>
+      <div class="text-3xl font-bold text-emerald-800" id="pen-amount">0</div>
+      <div class="text-sm text-emerald-600">บาท / เดือน</div>
+      <div class="text-xs text-gray-400 mt-2" id="pen-note"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 3: ภาษี
+══════════════════════════════════════════════ -->
+<div id="content-tax" class="tab-content hidden">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">เรื่องภาษีที่คุณต้องรู้</h2>
+    <p class="text-gray-500 text-sm">ข้อมูลและเงื่อนไขการคำนวณภาษีสำหรับเงินก้อนต่างๆ ของคุณ เพื่อรักษาประโยชน์สูงสุดของคุณ</p>
+  </div>
+
+  <div class="bg-orange-50 border border-orange-200 rounded-xl p-3 mb-6 flex items-start gap-2">
+    <i class="fa-solid fa-triangle-exclamation text-orange-500 mt-0.5"></i>
+    <p class="text-xs text-orange-800">เงินที่ได้รับอาจต้องนำ "ไปรวมในการยื่นภาษีทั้งหมด"</p>
+  </div>
+
+  <!-- เงินชดเชย -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
+    <h3 class="font-bold text-gray-800 mb-4">1. เงินชดเชยตามกฎหมายจากบริษัท</h3>
+    <p class="text-sm text-gray-600 mb-4">หากคุณมีอายุงานมากกว่า 5 ปีขึ้นไป เงินชดเชยส่วนนี้จะ "แยกคำนวณภาษี (โดยไม่นำ)" ในการยืนประกาศภาษีปกติ เพื่อลดภาระภาษีโดยตรงได้</p>
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-800">
+      <strong>ข้อดี:</strong> ภาษีที่คำนวณแยกนี้จะต่ำกว่าการนำไปรวมกับรายได้อื่นๆ ทำให้ประหยัดภาษีได้มาก
+    </div>
+  </div>
+
+  <!-- PVD Toggle -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
+    <h3 class="font-bold text-gray-800 mb-1">2. เงินกองทุนสำรองเลี้ยงชีพ (PVD)</h3>
+    <p class="text-xs text-orange-600 mb-4">⚠ หมายเหตุ – ภาษีที่ได้รับอาจ "ขึ้นอยู่กับเงินกองทุนเมื่อเริ่มออกจากงาน"</p>
+
+    <div class="grid md:grid-cols-2 gap-4 mb-4">
+      <!-- เงื่อนไข 1 -->
+      <div class="border-2 border-green-400 rounded-xl p-4">
+        <div class="font-semibold text-sm text-gray-700 mb-3">เงื่อนไข 1 :</div>
+        <div class="grid grid-cols-2 gap-2 mb-3">
+          <div class="bg-green-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">สำหรับผู้สมาชิก</div>
+          <div class="bg-green-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">สำหรับบริษัท</div>
+          <div class="bg-green-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">ผลประโยชน์</div>
+          <div class="bg-green-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">ผลประโยชน์</div>
+        </div>
+        <div class="text-xs text-gray-600 space-y-1">
+          <p>✅ อายุ 55 ปีขึ้นไป</p>
+          <p>✅ เป็นสมาชิกกองทุนครบ <strong>มากกว่า 5 ปี</strong></p>
+          <p>✅ เงินได้ทั้งหมดที่รับ <strong>ยกเว้นภาษี</strong></p>
+        </div>
+      </div>
+      <!-- เงื่อนไข 2 -->
+      <div class="border-2 border-red-300 rounded-xl p-4">
+        <div class="font-semibold text-sm text-gray-700 mb-3">เงื่อนไข 2 :</div>
+        <div class="grid grid-cols-2 gap-2 mb-3">
+          <div class="bg-green-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">สำหรับผู้สมาชิก</div>
+          <div class="bg-red-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">สำหรับบริษัท</div>
+          <div class="bg-green-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">ผลประโยชน์</div>
+          <div class="bg-red-500 text-white text-center text-xs py-2 px-1 rounded-lg font-medium">ผลประโยชน์</div>
+        </div>
+        <div class="text-xs text-gray-600 space-y-1">
+          <p>✅ อายุ 55 ปีขึ้นไป</p>
+          <p>✅ เป็นสมาชิกกองทุนครบ <strong>มากกว่า 5 ปี</strong></p>
+          <p>⚠️ เงินได้ 3 ส่วน <strong>ต้องเสียภาษี</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-gray-50 rounded-xl p-4">
+        <h4 class="font-semibold text-sm text-gray-700 mb-2">เอกสารที่ต้องใช้:</h4>
+        <ul class="text-xs text-gray-600 space-y-1">
+          <li>› สำนักงานสรรพากร ณ สถานที่อยู่ตามทะเบียนบ้าน</li>
+          <li>› ในแบบภาษีเรียกอากรตามมา</li>
+          <li>› ในขั้นตอนการขอคืนจากกองทุนสุดท้าย</li>
+        </ul>
+      </div>
+      <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+        <p class="font-bold text-red-700 text-center text-sm">จ่ายเข้าบัญชีเงินเดือน<br/>ณ เดือนถัดไปหักภาษี</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- เอกสาร -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
+    <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2"><span>📁</span> 3. เอกสารที่ต้องใช้ในการยื่นภาษี</h3>
+    <div class="grid md:grid-cols-2 gap-3">
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-3">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs font-semibold text-gray-700">1. หนังสือ 50 ทวิ</span>
+          <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">ขอที่ HR</span>
+        </div>
+        <p class="text-xs text-gray-500">หนังสือรับรองการหักภาษี ณ ที่จ่าย (ยื่นร่วมในวันที่ยื่นแบบภาษีประจำปี)</p>
+      </div>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-3">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs font-semibold text-gray-700">2. หนังสือรับรองรายเดือน</span>
+          <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">ขอที่ HR</span>
+        </div>
+        <p class="text-xs text-gray-500">เพื่อยืนยันเงินเดือน / การหักเงิน / การเพิ่มสิทธิที่จ่ายให้ HR</p>
+      </div>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-3">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs font-semibold text-gray-700">3. หนังสือแสดงรายการทำ</span>
+          <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">ขอที่ HR</span>
+        </div>
+        <p class="text-xs text-gray-500">รวมเอกสารทางบัญชีทั้งหมดเกี่ยวกับ HR ตลอดช่วงก่อนเกษียณ</p>
+      </div>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-3">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs font-semibold text-gray-700">4. หนังสือรับรองการทำงาน ณ ที่จ่าย (ยกเว้นกองทุน)</span>
+          <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">ส่งตรง</span>
+        </div>
+        <p class="text-xs text-gray-500">HR จะส่งตรงไปให้ทางอีเมล หลังจากส่งเอกสารครบแล้ว</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- สรุปภาษี -->
+  <div class="bg-white border border-gray-200 rounded-2xl p-6">
+    <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2"><span>📊</span> 4. สรุปประเภทเงินได้และการยื่นภาษี</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs border-collapse">
+        <thead><tr class="bg-gray-800 text-white">
+          <th class="p-2 text-left rounded-tl-lg">รายการเงินได้ (รับจากบริษัทเดิม)</th>
+          <th class="p-2 text-center">การเสียภาษี / วิธีคำนวณ</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr class="hover:bg-gray-50">
+            <td class="p-2">1. เงินเดือนสุดท้าย / โบนัส / ค่าตำแหน่งจากบริษัท<br/><span class="text-gray-400">รวมตามที่ได้รับจริงในเดือนสุดท้ายของการทำงาน</span></td>
+            <td class="p-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded-full font-medium">❌ ต้องเสียภาษี (ภงด. ก.พ. 90/91)</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50 bg-gray-50/50">
+            <td class="p-2">2. เงินชดเชยเลิกจ้าง (ตามกฎหมาย)<br/><span class="text-gray-400">จ่ายตามอัตรา "ลีลา" ที่กฎหมายกำหนด</span></td>
+            <td class="p-2 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full font-medium">⚠ ยื่นแบบ (แยกคำนวณตามที่เกินจำนวนที่กำหนด)</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="p-2">3. เงินกองทุน (PVD) – กรณีอายุสมาชิก <strong className="text-red-600">น้อยกว่า 5 ปี</strong></td>
+            <td class="p-2 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full font-medium">⚠ ยื่นแบบ (แยกคำนวณตามที่เกินจำนวนที่กำหนด)</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50 bg-gray-50/50">
+            <td class="p-2">4. เงินกองทุน (PVD) – กรณีอายุสมาชิก <strong>มากกว่า 5 ปี</strong> และอายุ 55 ปีขึ้นไป</td>
+            <td class="p-2 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">✅ ยกเว้นภาษี (ไม่ต้องนำไปยื่นแบบ)</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="p-2">5. เงินชราภาพจากประกันสังคม<br/><span class="text-gray-400">ได้รับทั้งบำเหน็จ หรือ บำนาญ (รายเดือน)</span></td>
+            <td class="p-2 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">✅ ยกเว้นภาษี (ไม่ต้องนำไปยื่นแบบ)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 4: สิทธิรักษาพยาบาล
+══════════════════════════════════════════════ -->
+<div id="content-medical" class="tab-content hidden">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">รักษาสิทธิการดูแลสุขภาพ</h2>
+    <p class="text-gray-500 text-sm">ตารางเปรียบเทียบเพื่อเลือกทางเลือกที่เหมาะสมที่สุดสำหรับคุณหลังเกษียณ</p>
+  </div>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm text-blue-800">
+    การเลือกประกันสังคม (มาตรา 39) หรือบัตรทอง จะกระทบต่อค่าใช้จ่าย (432 บาท/เดือน) แต่ยังคงให้สิทธิรักษาพยาบาลในโรงพยาบาลตามที่เลือก การที่สิทธิประกันสังคมเปลี่ยนแปลงจะขึ้นอยู่กับเงินบำนาญและการบริหารด้านสุขภาพ แต่หากออกจากงาน ม.39 แล้ว จะไม่สามารถใช้สิทธิประกันสังคม (ม.33 เดิม) ได้อีกต่อไป
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden mb-6">
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b">
+            <th class="p-3 text-left font-semibold text-gray-700">หัวข้อ</th>
+            <th class="p-3 text-center font-semibold text-blue-700">ประกันสังคม (ม.39)</th>
+            <th class="p-3 text-center font-semibold text-emerald-700">บัตรทอง (สปสช.)</th>
+            <th class="p-3 text-center font-semibold text-purple-700">ประกันสังคม (ม.40)</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 text-xs">
+          <tr class="hover:bg-gray-50">
+            <td class="p-3 font-medium">ค่าใช้จ่าย</td>
+            <td class="p-3 text-center text-red-600 font-semibold">จ่าย 432 บาท/เดือน</td>
+            <td class="p-3 text-center text-emerald-600 font-semibold">ฟรี ไม่มีค่าใช้จ่าย</td>
+            <td class="p-3 text-center text-purple-600 font-semibold">จ่าย 70-300 บาท/เดือน</td>
+          </tr>
+          <tr class="bg-gray-50/50">
+            <td class="p-3 font-medium">โรงพยาบาล</td>
+            <td class="p-3 text-center">รักษา รพ. ตามที่เลือกไว้</td>
+            <td class="p-3 text-center">ใช้ รพ. ใกล้บ้าน/ตามทะเบียน</td>
+            <td class="p-3 text-center text-red-500 font-medium">ไม่มีสิทธิ์รักษา (ใช้บัตรทองแทน)</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-medium">การรักษา</td>
+            <td class="p-3 text-center">ครอบคลุม ไม่เสียค่าใช้จ่าย 900/ปี</td>
+            <td class="p-3 text-center">ครอบคลุม/มีเพดานค่าใช้จ่ายสูง</td>
+            <td class="p-3 text-center text-red-500 font-medium">ไม่มีสิทธิ์รักษาพยาบาล</td>
+          </tr>
+          <tr class="bg-gray-50/50">
+            <td class="p-3 font-medium">ค้าเงินรายปี</td>
+            <td class="p-3 text-center">ได้รับเงินรายปี (ประมาณ)</td>
+            <td class="p-3 text-center">ไม่ได้รับสิทธิ์ชดเชยรายปี</td>
+            <td class="p-3 text-center">ได้รับสิทธิ์ชีวิต, ชราภาพ, สงเคราะห์</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-medium">ความคิดเห็น</td>
+            <td class="p-3 text-center">เลื่อน รพ. ได้ปีละ 1 ครั้ง</td>
+            <td class="p-3 text-center">เปลี่ยนสถานพยาบาลได้ 4 ครั้ง/ปี</td>
+            <td class="p-3 text-center">ส่งต่อ หรือ หยุดได้ทันที</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="grid md:grid-cols-2 gap-5">
+    <div class="bg-white border border-gray-200 rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded font-bold">🔵 ต่อประกันสังคม (ม.39)</span>
+      </div>
+      <ul class="text-xs text-gray-600 space-y-2">
+        <li class="flex items-start gap-2"><span class="text-blue-500">✓</span> สิทธิ์ยังคงอยู่กับโรงพยาบาลที่คุณเคยใช้บริการในระบบประกันสังคม และสามารถเลือก รพ. ใหม่ได้ปีละ 1 ครั้ง</li>
+        <li class="flex items-start gap-2"><span class="text-orange-500">⚠</span> ต้องสมัครภายใน 6 เดือนหลังออกจากงาน</li>
+      </ul>
+      <div class="mt-3 bg-orange-50 border border-orange-200 rounded-lg p-2 text-xs text-orange-700">
+        <strong>⚠ สำคัญ:</strong> ต้องสมัครภายใน 6 เดือนหลังออกจากงาน มิฉะนั้นจะหมดสิทธิ์โดยอัตโนมัติ
+      </div>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-0.5 rounded font-bold">🟢 ใช้สิทธิ์บัตรทอง</span>
+      </div>
+      <ul class="text-xs text-gray-600 space-y-2">
+        <li class="flex items-start gap-2"><span class="text-emerald-500">✓</span> สิทธิ์จะโอนมาเองโดยอัตโนมัติ หากไม่ได้สมัคร ม.39 ไม่มีค่าใช้จ่ายรายเดือน</li>
+        <li class="flex items-start gap-2"><span class="text-emerald-500">✓</span> โดยพื้นฐานการรักษาทุกโรคที่ไม่มีสถานพยาบาลทำได้</li>
+      </ul>
+      <div class="mt-3 bg-emerald-50 border border-emerald-200 rounded-lg p-2 text-xs text-emerald-700">
+        <strong>✨ แนะนำ:</strong> หากต้องการรับบำนาญเต็มสิทธิ์ ควรเลือกบัตรทองแทน ม.39
+      </div>
+    </div>
+  </div>
+
+  <!-- ข้อควรระวัง -->
+  <div class="mt-5 bg-yellow-50 border border-yellow-300 rounded-xl p-4 flex items-start gap-3">
+    <i class="fa-solid fa-triangle-exclamation text-yellow-500 text-lg mt-0.5"></i>
+    <div class="text-xs text-yellow-800">
+      <strong class="block mb-1">ข้อควรระวัง</strong>
+      หากรับเงินบำนาญชราภาพแล้ว จะหมดสิทธิ์ประกันสังคม แต่สามารถใช้สิทธิ์บัตรทองแทนได้ทันที
+    </div>
+  </div>
+
+  <!-- ตาราง detail -->
+  <div class="mt-6 bg-white border border-gray-200 rounded-2xl p-5">
+    <h3 class="font-bold text-gray-700 mb-3 flex items-center gap-2"><span>🔍</span> เปรียบเทียบสิทธิรักษาพยาบาล (บัตรทอง vs ม.39)</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs border-collapse">
+        <thead><tr class="bg-gray-100">
+          <th class="p-2 text-left font-semibold">รายการรักษาพยาบาล</th>
+          <th class="p-2 text-center font-semibold text-emerald-700">บัตรทอง (สปสช.)</th>
+          <th class="p-2 text-center font-semibold text-blue-700">ประกันสังคม (ม.39)</th>
+        </tr></thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr><td class="p-2">ทันตกรรม (อุดฟัน, ถอน, ขูดหินปูน)</td><td class="p-2 text-center text-emerald-600">ฟรี (หากมีการบริการถ้าโรงพยาบาลมีน้อย)</td><td class="p-2 text-center text-blue-600">ฟรีไม่เกิน 900 บาท/ปี</td></tr>
+          <tr class="bg-gray-50"><td class="p-2">การคลอดบุตร</td><td class="p-2 text-center text-emerald-600">ฟรี (ไม่จำกัดจำนวนครั้ง)</td><td class="p-2 text-center text-orange-500">เบิกได้ไม่เกิน 15,000 บาท/ครั้ง</td></tr>
+          <tr><td class="p-2">ค่าแฝดอาหารผู้ป่วยใน (ผู้ป่วยใน)</td><td class="p-2 text-center text-emerald-600">ฟรี (พักฟอสซอม)</td><td class="p-2 text-center text-orange-500">ฟรีไม่เกิน 700 บาท/วัน</td></tr>
+          <tr class="bg-gray-50"><td class="p-2">การรักษามะเร็ง (Cancer Anywhere ไปได้ทุก รพ. ต้านสิทธิ)</td><td class="p-2 text-center text-emerald-600">ครอบคลุม รพ. ต้นสังกัด พร้อมส่งต่อ</td><td class="p-2 text-center text-orange-500">ครอบคลุมตาม รพ. ที่เลือก</td></tr>
+          <tr><td class="p-2">การพยาบาล/โรคร้ายแรง</td><td class="p-2 text-center text-emerald-600">ครอบคลุม (อาจมีเพดาน)</td><td class="p-2 text-center text-orange-500">ครอบคลุมตาม รพ. ที่เลือก</td></tr>
+          <tr class="bg-gray-50"><td class="p-2">การเฝ้าติดตามเครื่องมือแพทย์</td><td class="p-2 text-center text-emerald-600">ฟรี (หากมีคนวินิจฉัยที่ประเมินสิทธิ)</td><td class="p-2 text-center text-orange-500">ครอบคลุม (อาจมีขั้นตอนในใบสั่งยา รพ.)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TAB 5: สิ่งที่ต้องทำ & เอกสาร
+══════════════════════════════════════════════ -->
+<div id="content-todo" class="tab-content hidden">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-2">สิ่งที่ต้องทำ &amp; เครื่องมือช่วยเหลือ</h2>
+    <p class="text-gray-500 text-sm">สรุปสิ่งที่คุณต้องดำเนินการ สถานที่ติดต่อ และเอกสารที่ต้องเตรียมในแต่ละขั้นตอน พร้อมแอปพลิเคชันที่ไม่ควรพลาด</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="md:col-span-2 space-y-5">
+      <!-- Progress -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-semibold text-gray-700">ความคืบหน้าการเตรียมเอกสาร</span>
+          <span class="text-sm font-bold text-purple-600" id="todo-pct">0%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div id="todo-bar" class="bg-purple-500 h-3 rounded-full transition-all duration-500" style="width:0%"></div>
+        </div>
+        <div class="text-xs text-gray-400 mt-1 text-right" id="todo-count">0 / 0 รายการ</div>
+      </div>
+
+      <!-- Section 1 -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <h3 class="font-bold text-gray-800 mb-1 flex items-center gap-2"><span class="bg-gray-800 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center">1</span> ยื่นรับเงินชราภาพจากประกันสังคม</h3>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
+          <p class="text-xs text-red-700 font-medium">📍 สิ่งที่ต้องทำและไปให้ได้คือ:</p>
+          <p class="text-xs text-red-600 mt-1">เดินทางไปยังสำนักงานประกันสังคม (ทุกจังหวัดใกล้บ้าน) เพื่อยื่นขอรับเงินบำนาญ/บำเหน็จชราภาพ ภายใน 60 วัน หรือยื่นก่อนได้ 2 ปี บัตรความไทให้ 60 วัน</p>
+        </div>
+        <p class="text-xs font-semibold text-gray-600 mb-2">✅ เอกสารที่ต้องใช้ (เช็คลิสต์):</p>
+        <div class="space-y-2" id="docs-section1">
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">แบบคำขอรับประโยชน์ทดแทน (สปส. 2-01)</div>
+              <div class="text-xs text-gray-400">แบบฟอร์มขอรับเงินที่สำนักงานประกันสังคมทุกสาขา</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">บัตรประชาชน</div>
+              <div class="text-xs text-gray-400">พร้อมสำเนาที่ถ่ายล่าสุด</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">สำเนาสมุดบัญชีธนาคาร</div>
+              <div class="text-xs text-gray-400">สำหรับรับโอนเงินบำเหน็จ/บำนาญ (ออมทรัพย์ประเภท)</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <h3 class="font-bold text-gray-800 mb-1 flex items-center gap-2"><span class="bg-gray-800 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center">2</span> รักษาสิทธิสุขภาพ &amp; เบี้ยยังชีพผู้สูงอายุ</h3>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
+          <p class="text-xs text-red-700 font-medium">📍 สิ่งที่ต้องทำและสถานที่ต้องไปคือ:</p>
+          <ul class="text-xs text-red-600 mt-1 space-y-1 list-disc list-inside">
+            <li>ต่อ ม.39: ยื่นที่สำนักงานประกันสังคมภายใน 6 เดือนหลังออกจากงาน (ทุกจังหวัดใกล้บ้าน)</li>
+            <li>ต่อ ม.40: สมัครออนไลน์ผ่าน ThaID หรือ SSO Connect หรือ ณ สำนักงานประกันสังคม</li>
+            <li>เบี้ยยังชีพผู้สูงอายุ (รับปีถัดไป): ยื่นที่ อบต./เทศบาล/กรุงเทพมหานคร ตามทะเบียนบ้าน ภายใน 11 เดือนแรก</li>
+          </ul>
+          <div class="mt-2 text-xs text-gray-600 bg-white rounded-lg p-2">
+            <strong>เบี้ยยังชีพผู้สูงอายุ (ปีงบประมาณ):</strong>
+            <div class="grid grid-cols-2 gap-1 mt-1">
+              <span>• อายุ 60-69 ปี: <strong>600 บาท</strong></span>
+              <span>• อายุ 70-79 ปี: <strong>700 บาท</strong></span>
+              <span>• อายุ 80-89 ปี: <strong>800 บาท</strong></span>
+              <span>• อายุ 90 ปีขึ้นไป: <strong>1,000 บาท</strong></span>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs font-semibold text-gray-600 mb-2">✅ เอกสารที่ต้องใช้ (เช็คลิสต์):</p>
+        <div class="space-y-2">
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">สำเนาบัตรประชาชน</div>
+              <div class="text-xs text-gray-400">ใช้ทุกกรณีสำหรับทุกหน่วยงาน</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">สำเนาทะเบียนบ้าน</div>
+              <div class="text-xs text-gray-400">สำหรับการยื่นรับเบี้ยยังชีพ ณ ท้องถิ่น</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">สำหนาสมุดบัญชีเงินฝากธนาคาร</div>
+              <div class="text-xs text-gray-400">สำหรับรับโอนเบี้ยยังชีพรายเดือน</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">แบบฟอร์ม สปส. 1-20 (สำหรับสมัคร ม.39)</div>
+              <div class="text-xs text-gray-400">สามารถดาวน์โหลดได้ที่เว็บ SSO หรือ รับที่สำนักงาน</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <h3 class="font-bold text-gray-800 mb-1 flex items-center gap-2"><span class="bg-amber-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center">3</span> การเตรียมยื่นภาษีประจำปี</h3>
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+          <p class="text-xs text-yellow-800">📍 สิ่งที่ต้องทำและไปให้ได้คือ: รวบรวมเอกสารทั้งหมดที่ต้องนำไปยื่น เพื่อยื่นแบบแสดงรายการภาษี (ภ.ง.ด. ก.พ. 90/91) ผ่านเว็บไซต์กรมสรรพากร (ยื่นออนไลน์ได้ สะดวกที่สุด)</p>
+        </div>
+        <p class="text-xs font-semibold text-gray-600 mb-2">✅ เอกสารที่ต้องรวบรวม (เช็คลิสต์สรุปรวมก่อนยื่น):</p>
+        <div class="space-y-2">
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">หนังสือรับรองการทำงาน ณ ที่จ่าย (50 ทวิ)</div>
+              <div class="text-xs text-gray-400">รับจาก HR ที่จ่ายสำนักงานก่อนเดือนมีนาคมของปีถัดไป</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">หนังสือรับรองรายเดือน (สำหรับยื่นภาษี)</div>
+              <div class="text-xs text-gray-400">เพื่อยืนยันเงินเดือน / การเพิ่มสิทธิที่จ่ายให้ HR</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">หนังสือแสดงรายการทำ ณ ที่จ่าย (สำหรับกองทุนสำรองเลี้ยงชีพ)</div>
+              <div class="text-xs text-gray-400">รับจาก HR ในฐานะตัวแทนกองทุน</div>
+            </div>
+          </label>
+          <label class="todo-item flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-3 cursor-pointer hover:bg-purple-50/30 transition">
+            <input type="checkbox" class="todo-check mt-0.5 accent-purple-600" onchange="updateTodo()">
+            <div>
+              <div class="text-sm font-semibold text-gray-800">หนังสือรับรองการทำงาน ณ ที่จ่าย (ยกเว้นกองทุน)</div>
+              <div class="text-xs text-gray-400">HR จะส่งตรงทาง E-mail หลังจากส่งเอกสารครบ</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Sidebar -->
+    <div class="space-y-4">
+      <div class="bg-gray-900 rounded-2xl p-5 text-white">
+        <h3 class="font-bold text-sm mb-1">📱 แอปพลิเคชันที่ควรมี</h3>
+        <p class="text-xs text-gray-400 mb-4">ดาวน์โหลดแอปเหล่านี้เพื่อเข้าถึงสิทธิประโยชน์ได้สะดวกมากขึ้น</p>
+        <div class="space-y-3">
+          <div class="bg-gray-800 rounded-xl p-3 flex items-start gap-3">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0">T</div>
+            <div>
+              <div class="text-sm font-semibold">ThaID</div>
+              <div class="text-xs text-gray-400 mt-0.5">แอปพลิเคชันยืนยันตัวตนภาครัฐ สามารถยืนยันตัวตน ตรวจสอบประวัติส่วนตัว และใช้แทนบัตรประชาชนในบางกรณี</div>
+            </div>
+          </div>
+          <div class="bg-gray-800 rounded-xl p-3 flex items-start gap-3">
+            <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0">S</div>
+            <div>
+              <div class="text-sm font-semibold">SSO Connect</div>
+              <div class="text-xs text-gray-400 mt-0.5">แอปพลิเคชันประกันสังคม ตรวจสอบสิทธิ์ ยื่นสมัคร ม.39 ติดตามสถานะการรับเงิน ข่าวสารจากสำนักงาน</div>
+            </div>
+          </div>
+          <div class="bg-gray-800 rounded-xl p-3 flex items-start gap-3">
+            <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0">ท</div>
+            <div>
+              <div class="text-sm font-semibold">กองทุน (TangRet)</div>
+              <div class="text-xs text-gray-400 mt-0.5">แอปพลิเคชัน กบข. (สำหรับข้าราชการ) ตรวจสอบยอด บริการสมาชิก ดาวน์โหลดเอกสาร ส่วนสิทธิ์เพิ่มเติมในอนาคต</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-gray-700">
+          <p class="text-xs text-gray-500">🔍 มีข้อสงสัยเพิ่มเติม?</p>
+          <p class="text-xs text-gray-400 mt-1">ติดต่อสอบถามทางโทรศัพท์หรือเว็บไซต์ประกันสังคมโดยตรง</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 text-xs py-5 mt-10 no-print">
+  <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+    <p>© 2569 คู่มือเตรียมความพร้อมหลังเกษียณ (ฉบับพนักงาน)</p>
+    <p>สายด่วนประกันสังคม <strong class="text-white">1506</strong> | บัตรทอง <strong class="text-white">1330</strong> | กรมสรรพากร <strong class="text-white">1161</strong></p>
+  </div>
+</footer>
+
+<script>
+// Tab switching
+function switchTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+  document.getElementById('content-' + id).classList.remove('hidden');
+  document.querySelectorAll('header button[id^="tab-"]').forEach(btn => {
+    btn.classList.remove('tab-active');
+    btn.classList.add('tab-inactive');
+  });
+  document.getElementById('tab-' + id).classList.remove('tab-inactive');
+  document.getElementById('tab-' + id).classList.add('tab-active');
+}
+
+// Severance calculator
+function calcSeverance() {
+  const salary = parseFloat(document.getElementById('salary').value);
+  const days = parseInt(document.getElementById('workYears').value);
+  if (!salary || !days) { alert('กรุณากรอกเงินเดือนและเลือกอายุงาน'); return; }
+  const daily = salary / 30;
+  const total = Math.round(daily * days);
+  const result = document.getElementById('calc-result');
+  result.classList.remove('hidden');
+  document.getElementById('calc-amount').textContent = total.toLocaleString('th-TH');
+  document.getElementById('calc-note').textContent = `คำนวณจาก: ${salary.toLocaleString()} ÷ 30 × ${days} วัน = ${total.toLocaleString()} บาท`;
+}
+
+// Pension calculator
+function calcPension() {
+  const salary = parseFloat(document.getElementById('penSalary').value);
+  const months = parseInt(document.getElementById('penMonths').value);
+  if (!salary || !months || months < 180) {
+    alert('กรุณากรอกข้อมูลให้ครบ (ระยะส่งสมทบต้องมากกว่า 180 เดือน)'); return;
+  }
+  const base = 0.20;
+  const extra = Math.max(0, months - 180) / 12 * 0.015;
+  const rate = base + extra;
+  const monthly = Math.round(salary * rate);
+  document.getElementById('pen-result').classList.remove('hidden');
+  document.getElementById('pen-amount').textContent = monthly.toLocaleString('th-TH');
+  document.getElementById('pen-note').textContent =
+    `อัตรา ${(rate * 100).toFixed(1)}% ของ ${salary.toLocaleString()} บาท (ส่งสมทบ ${months} เดือน)`;
+}
+
+// Todo checklist
+function updateTodo() {
+  const all = document.querySelectorAll('.todo-check');
+  const done = Array.from(all).filter(c => c.checked).length;
+  const total = all.length;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('todo-bar').style.width = pct + '%';
+  document.getElementById('todo-pct').textContent = pct + '%';
+  document.getElementById('todo-count').textContent = done + ' / ' + total + ' รายการ';
+  // Visual feedback
+  document.querySelectorAll('.todo-item').forEach(item => {
+    const cb = item.querySelector('.todo-check');
+    if (cb.checked) {
+      item.classList.add('doc-done');
+      item.classList.remove('bg-gray-50','border-gray-200');
+    } else {
+      item.classList.remove('doc-done');
+      item.classList.add('bg-gray-50','border-gray-200');
+    }
+  });
+}
+
+// Init count
+updateTodo();
+</script>
+</body>
+</html>
